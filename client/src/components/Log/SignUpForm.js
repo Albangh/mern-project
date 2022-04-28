@@ -30,31 +30,30 @@ const SignUpForm = () => {
           "Les mots de passe ne correspondent pas";
       }
 
-      if (!terms.checked) {
+      if (!terms.checked)
         termsError.innerHTML = "Veuillez valider les conditions generales";
-      } else {
-        // back conditions
-        await axios({
-          method: "post",
-          url: `${process.env.REACT_APP_API_URL}api/user/register`,
-          data: {
-            pseudo,
-            email,
-            password,
-          },
+    } else {
+      // back conditions
+      await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}api/user/register`,
+        data: {
+          pseudo,
+          email,
+          password,
+        },
+      })
+        .then((res) => {
+          console.log(res);
+          if (res.data.errors) {
+            pseudoError.innerHTML = res.data.errors.pseudo;
+            emailError.innerHTML = res.data.errors.email;
+            passwordError.innerHTML = res.data.errors.password;
+          } else {
+            setFormSubmit(true);
+          }
         })
-          .then((res) => {
-            console.log(res);
-            if (res.data.errors) {
-              pseudoError.innerHTML = res.data.errors.pseudo;
-              emailError.innerHTML = res.data.errors.email;
-              passwordError.innerHTML = res.data.errors.password;
-            } else {
-              setFormSubmit(true);
-            }
-          })
-          .catch((err) => console.log(err));
-      }
+        .catch((err) => console.log(err));
     }
   };
 
