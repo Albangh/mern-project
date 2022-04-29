@@ -7,9 +7,9 @@ const pipeline = promisify(require("stream").pipeline);
 module.exports.updloadProfil = async (req, res) => {
   try {
     if (
-      req.file.detectedMimeType !== "image/jpg" &&
-      req.file.detectedMimeType !== "image.png" &&
-      req.file.detectedMimeType !== "image/jepg"
+      req.file.detectedMimeType != "image/jpg" &&
+      req.file.detectedMimeType != "image.png" &&
+      req.file.detectedMimeType != "image/jepg"
     )
       throw Error("invalid file");
 
