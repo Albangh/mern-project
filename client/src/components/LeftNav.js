@@ -10,7 +10,7 @@ const LeftNav = () => {
             <img src="./img/icons/home.svg" alt="home" />
           </NavLink>
           <br />
-          <NavLink to="/" className={({isActive}) => `${isActive ? "active-left-nav" : ''}`}>
+          <NavLink to="/trending" className={({isActive}) => `${isActive ? "active-left-nav" : ''}`}>
             <img src="./img/icons/rocket.svg" alt="home" />
           </NavLink>
           <br />
