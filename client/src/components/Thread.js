@@ -28,7 +28,7 @@ const Thread = () => {
 
     window.addEventListener("scroll", loadMore);
     return () => window.removeEventListener("scroll", loadMore);
-  }, [loadPost]);
+  }, [loadPost, dispatch, count]);
 
   return (
     <div className="thread-container">
